@@ -1,0 +1,3 @@
+include ':godot-lib'
+include ':godot'
+rootProject.name = "edukids-sdk-godot"

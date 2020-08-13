@@ -1,0 +1,32 @@
+plugins {
+    id 'com.android.library'
+    id 'teanity'
+    id 'maven-publish'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = Publishing.groupId
+                artifactId = project.name
+                version = Publishing.version
+            }
+        }
+    }
+}
+
+dependencies {
+
+    compileOnly project(path: ':godot-lib')
+
+    implementation(Lib.edu.sdk)
+
+    implementation(Lib.android.startup)
+    implementation(Lib.android.core)
+
+    implementation(Lib.kotlin.coroutines)
+
+}

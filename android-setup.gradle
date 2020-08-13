@@ -1,0 +1,57 @@
+subprojects {
+    afterEvaluate {
+        String androidApp = "com.android.application"
+        String androidFeature = "com.android.dynamic-feature"
+        String androidLibrary = "com.android.library"
+        String kotlinKapt = "kotlin-kapt"
+
+        if (!(plugins.hasPlugin(androidLibrary) || plugins.hasPlugin(androidApp) || plugins.hasPlugin(androidFeature))) {
+            return
+        }
+
+        if (plugins.hasPlugin(kotlinKapt)) {
+            kapt {
+                correctErrorTypes = true
+                useBuildCache = true
+                mapDiagnosticLocations = true
+                arguments {
+                    arg("room.schemaLocation", "$projectDir/schemas")
+                    arg("moshi.generated", "javax.annotation.Generated")
+                }
+                javacOptions {
+                    option("-Xmaxerrs", 1000)
+                }
+            }
+        }
+
+        android {
+            compileSdkVersion(Sdk.compileSdk)
+
+            defaultConfig {
+                minSdkVersion(Sdk.minSdk)
+                targetSdkVersion(Sdk.targetSdk)
+
+                vectorDrawables.useSupportLibrary = true
+            }
+
+            lintOptions {
+                abortOnError true
+                fatal 'StopShip'
+            }
+
+            dexOptions {
+                preDexLibraries !System.getenv("ci")
+            }
+
+            kotlinOptions.freeCompilerArgs += ["-Xinline-classes"]
+
+            buildTypes {
+                release {
+                    minifyEnabled false
+                    shrinkResources false
+                    proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                }
+            }
+        }
+    }
+}
