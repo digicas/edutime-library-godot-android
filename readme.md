@@ -3,7 +3,7 @@
 ## Installation
 
 1) Download [EduKidsSDK.gdap](EduKidsSDK.gdap.sample)
-2) Follow (official docs](https://docs.godotengine.org/en/stable/tutorials/plugins/android/android_plugin.html#loading-and-using-an-android-plugin) on how to import .gdap file
+2) Follow [official docs](https://docs.godotengine.org/en/stable/tutorials/plugins/android/android_plugin.html#loading-and-using-an-android-plugin) on how to import .gdap file
 
 ---
 
