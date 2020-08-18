@@ -1,6 +1,6 @@
-package com.edukids.sdk.godot.dictionary
+package cz.edukids.sdk.godot.dictionary
 
-import com.edukids.sdk.model.*
+import cz.edukids.sdk.model.*
 import org.godotengine.godot.Dictionary
 import java.util.*
 import kotlin.reflect.KProperty0

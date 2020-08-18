@@ -1,16 +1,15 @@
-package com.edukids.sdk.godot
+package cz.edukids.sdk.godot
 
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import android.view.View
-import com.edukids.sdk.EduSdk
-import com.edukids.sdk.EduSdkInstance
-import com.edukids.sdk.godot.dictionary.toDictionary
-import com.edukids.sdk.godot.signal.EduSdkSignals
-import com.edukids.sdk.model.EduMissionFinishParams
-import com.edukids.sdk.model.EduMissionStartParams
-import com.edukids.sdk.model.ScreenTimeCategorySuggestion
+import cz.edukids.sdk.EduSdk
+import cz.edukids.sdk.EduSdkInstance
+import cz.edukids.sdk.godot.signal.EduSdkSignals
+import cz.edukids.sdk.model.EduMissionFinishParams
+import cz.edukids.sdk.model.EduMissionStartParams
+import cz.edukids.sdk.model.ScreenTimeCategorySuggestion
 import kotlinx.coroutines.launch
 import org.godotengine.godot.Godot
 
@@ -40,7 +39,8 @@ class EduSdkGodotPlugin(godot: Godot) : ScopedPlugin(godot) {
 
     // --- Overrides
 
-    override fun getPluginName() = TAG
+    override fun getPluginName() =
+        TAG
 
     override fun getPluginMethods() = listOf(
         this::getTimeConstraints.name,

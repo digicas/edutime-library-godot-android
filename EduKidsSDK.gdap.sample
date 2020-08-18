@@ -6,5 +6,5 @@ binary="EduKidsSDK.aar"
 
 [dependencies]
 
-remote=["com.edukids.sdk:godot:0.0-dev01"]
+remote=["cz.edukids.sdk:godot:0.0-dev01"]
 custom_maven_repos=["https://jitpack.io"]

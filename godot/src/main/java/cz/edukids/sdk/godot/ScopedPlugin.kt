@@ -1,4 +1,4 @@
-package com.edukids.sdk.godot
+package cz.edukids.sdk.godot
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

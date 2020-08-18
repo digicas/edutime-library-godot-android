@@ -1,4 +1,4 @@
-package com.edukids.sdk.godot.signal
+package cz.edukids.sdk.godot.signal
 
 import org.godotengine.godot.plugin.SignalInfo
 
