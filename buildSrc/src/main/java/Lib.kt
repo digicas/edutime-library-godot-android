@@ -35,7 +35,7 @@ object Lib {
     }
 
     object Edu {
-        const val sdk = "cz.edukids:sdk:0.0-dev01"
+        const val sdk = "cz.edukids:sdk:0.0.0-dev01"
     }
 
     object Other {

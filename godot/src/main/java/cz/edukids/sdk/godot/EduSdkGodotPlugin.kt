@@ -4,8 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.util.Log
 import android.view.View
-import cz.edukids.sdk.EduSdk
-import cz.edukids.sdk.EduSdkInstance
+import cz.edukids.sdk.EduTimeSdk
+import cz.edukids.sdk.EduTimeSdkInstance
+import cz.edukids.sdk.godot.dictionary.toDictionary
 import cz.edukids.sdk.godot.signal.EduSdkSignals
 import cz.edukids.sdk.model.EduMissionFinishParams
 import cz.edukids.sdk.model.EduMissionStartParams
@@ -23,14 +24,14 @@ class EduSdkGodotPlugin(godot: Godot) : ScopedPlugin(godot) {
         private const val TAG = "EduKidsSDK" // do not change, occurrence also in manifest!
     }
 
-    private lateinit var instance: EduSdkInstance
+    private lateinit var instance: EduTimeSdkInstance
     private val mission inline get() = instance.getMission()
 
     // --- Plugin init
 
     override fun onMainCreate(activity: Activity?): View? {
 
-        EduSdk().runCatching { getNewInstance(activity?.intent ?: Intent()) }
+        EduTimeSdk().runCatching { getNewInstance(activity?.intent ?: Intent()) }
             .onSuccess { instance = it }
             .onFailure { Log.e(TAG, "Edu Sdk cannot be initialized", it) }
 
