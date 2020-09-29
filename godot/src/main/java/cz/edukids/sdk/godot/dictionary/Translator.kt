@@ -10,14 +10,13 @@ fun TimeConstraints.toDictionary() = Dictionary().also {
     it += this::stopTimestamp
 }
 
-fun ScreenTimeCategoryConstraints.toDictionary() = Dictionary().also {
+fun ScreenTimeCategoryInfo.toDictionary() = Dictionary().also {
     it += this::assignedCategory to assignedCategory.toDictionary()
     it += this::availableCategories to availableCategories.map { it.toDictionary() }
     it += this::currentCategory to currentCategory.toDictionary()
 }
 
 fun ScreenTimeCategory.toDictionary() = Dictionary().also {
-    it += this::description
     it += this::id
     it += this::isLocked
     it += this::isSelected
@@ -26,7 +25,7 @@ fun ScreenTimeCategory.toDictionary() = Dictionary().also {
 
 fun CurrencyStats.toDictionary() = Dictionary().also {
     it += this::currentAmount
-    it += this::earnedInInstance
+    it += this::earnedByMe
 }
 
 fun SkillLevel.toDictionary() = Dictionary().also {
@@ -68,6 +67,14 @@ private operator fun <T : Number> Dictionary.plusAssign(property: KProperty0<T>)
 @JvmName("putString")
 private operator fun <T : CharSequence> Dictionary.plusAssign(property: KProperty0<T>) {
     this[property.name.camelToSnakeCase()] = property.get()
+}
+
+@JvmName("putEnum")
+private operator fun <T : Enum<T>> Dictionary.plusAssign(property: KProperty0<T>) {
+    this[property.name.camelToSnakeCase()] = when (val e = property.get()) {
+        is TimeCategory -> e.id
+        else -> e.toString()
+    }
 }
 
 @JvmName("putStringArray")

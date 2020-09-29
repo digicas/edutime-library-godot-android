@@ -45,7 +45,7 @@ class EduSdkGodotPlugin(godot: Godot) : ScopedPlugin(godot) {
 
     override fun getPluginMethods() = listOf(
         this::getTimeConstraints.name,
-        this::getScreenTimeCategoryConstraints.name,
+        this::getScreenTimeCategoryInfo.name,
         this::getCurrencyStats.name,
         this::getSkillLevel.name,
         this::startMission.name,
@@ -68,9 +68,9 @@ class EduSdkGodotPlugin(godot: Godot) : ScopedPlugin(godot) {
         }
     }
 
-    fun getScreenTimeCategoryConstraints() {
+    fun getScreenTimeCategoryInfo() {
         scope.launch {
-            instance.getScreenTimeCategoryConstraints().onSuccess {
+            instance.getScreenTimeCategoryInfo().onSuccess {
                 emitSignal(EduSdkSignals.categoryConstraints.name, it.toDictionary())
             }.onFailure {
                 emitSignal(EduSdkSignals.categoryConstraintsError.name, it.toDictionary())
